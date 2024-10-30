@@ -1,28 +1,37 @@
-#Exercise 9. Un alumno desea saber que nota necesita en el tercer certamen para aprobar un ramo.
-#El promedio del ramo se calcula con la siguiente formula.
+#Exercise 10. Cuando un huevo es hervido en agua, las proteínas comienzan a coagularse cuando la temperatura sobrepasa un punto crítico. A medida que la temperatura aumenta, las reacciones se aceleran.
+#En la clara, las proteínas comienzan a coagularse para temperaturas sobre 63°C, mientras que en la yema lo hacen para temperaturas sobre 70°C. Para hacer un huevo a la copa, la clara debe haber sido calentada lo suficiente para coagularse a más de 63°C, pero la yema no debe sobrepasar los 70°C para evitar obtener un huevo duro.
 
-#NC=(C1+C2+C3)3
-#NF=NC⋅0.7+NL⋅0.3
-#Donde NC
-# es el promedio de certámenes, NL
-# el promedio de laboratorio y NF
-# la nota final.
+#El tiempo en segundos que toma al centro de la yema alcanzar Ty °C está dado por la fórmula:
 
-#Escriba un programa que pregunte al usuario las notas de los dos primeros certamen y la nota de laboratorio, y muestre la nota que necesita el alumno para aprobar el ramo con nota final 60.
+#t=M2/3cρ1/3Kπ2(4π/3)2/3ln[0.76To−TwTy−Tw],
+#donde M
+ #es la masa del huevo, ρ
+ #su densidad, c
+ #su capacidad calorífica específica y K
+ #su conductividad térmica. Algunos valores típicos son:
 
-#Ingrese nota certamen 1: 45
-#Ingrese nota certamen 2: 55
-#Ingrese nota laboratorio: 65
-#Necesita nota 72 en el certamen 3
+#M=47[g]
+# para un huevo pequeño y M=67[g]
+# para uno grande,
+#ρ=1.038[gcm−3],
+#c=3.7[Jg−1K−1], y
+#K=5.4⋅10−3[Wcm−1K−1].
 
-contest_1 = float(input("Enter contest note 1 "))
-contest_2 = float(input("Enter contest note 2 "))
-laboratory_note = float(input("Enter laboratory note "))
+#Tw es la temperatura de ebullición del agua y To la temperatura original del huevo antes de meterlo al agua, ambos en grados Celsius.
 
-desired_note = 60
+#Escriba un programa que reciba como entrada la temperatura original del huevo y muestre como salida el tiempo en segundos que le toma alcanzar la temperatura máxima para prepararlo a la copa.
 
-contest_3 = ((desired_note - laboratory_note * 0.3) / 0.7) * 3 - contest_1 - contest_2
+import math
 
-print(f"""
-Need note {round(contest_3, 1)} in the contest
-""")
+p = 1.038
+c = 3.7
+K = 5.4e-3
+Tw = 100
+Ty = 70
+
+To = float(input("Enter the original temperature of the egg in °C: "))
+M = float(input("Enter the mass of the egg (47 for small,67 for large) in grams: "))
+
+t = ((M**(2/3)) * c * (p**(1/3)) / (K * (math.pi**2) * ((4 * math.pi) / 3)**(2/3))) * math.log(0.76 * (To - Tw) / (Ty - Tw))
+
+print(f"The time needed to prepare the egg in the cup is: {round(t, 2)} seconds")
