@@ -1,20 +1,18 @@
-# Exercise 2. Escriba un programa que reciba como entrada el radio de un círculo y entregue como salida su perímetro y su área:
+# Exercise 3. Escriba un programa que calcule el promedio de 4 notas ingresadas por el usuario:
 
-#Example:
-#Ingrese el radio: 5
-#Perimetro: 31.4
-#Área: 78.5
+#Primera nota: 55
+#Segunda nota: 71
+#Tercera nota: 46
+#Cuarta nota: 87
+#El promedio es: 64.75
 
-#P=2pi*r
-#A=pi*r²
-#Solution 2
+data_1 = int(input("First note "))
+data_2 = int(input("Second note "))
+data_3 = int(input("Third note "))
+data_4 = int(input("Fourth note "))
 
-import math
+sum = (data_1 + data_2 + data_3 + data_4)
+amount = 4
+average = sum / amount
 
-radio = int(input("Enter the radio: "))
-perimeter = round(2 * math.pi * radio, 1)
-area =  round(math.pi * math.pow(radio, 2), 1)
-
-print(f"""
-Perimeter: {perimeter}
-Area: {area}""")
+print(f"The average is: {average}")
